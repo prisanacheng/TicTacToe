@@ -36,20 +36,36 @@ function onBoardClick(event) {
        
     function ticTacToeChecker (){
 
-        function getRow (board, row){
+        function getRow (board, row){  // ran in test.js 
             return board[row];
         }
 
+        function getColumn (board, column){     // ran in test.js
+            let columnArray = []
+                for (let i = 0; i < board.length; i++) { //looping through each array
+                    let eachArray = board[i] // hole each array in a variable
+                    let value = eachArray[column] // pull out value from each array
+                    columnArray.push(value)
+                }
+            return columnArray;
+        }
 
-
-
-
-
-
+        
 
 
     }      
     
 
   renderState() // show the user the new state
+}
+
+
+// section for getting names to appear on screen
+
+const player1Name = document.getElementById("player1Submit");
+player1Name.addEventListener('click', player1Click);
+function player1Click(event){
+    if (event.target.innerHTML){
+        event.target.innerHTML = value;
+    }
 }

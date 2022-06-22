@@ -21,23 +21,25 @@
     </p>
     <p>To clear the board, click "Reset My Board" to start over!</p>
     <div class="players">
-      <form>
+      <form class="inputForm">
         <input
           type="text"
-          class="playerinput"
+          id="player1input"
           name="player1"
           value="Enter Player 1 Name"
         />
-        <input type="submit" class="submit" name="submit" />
+        <label for="player1input"></label>
+        <input type="submit" id="player1Submit" name="submit" />
       </form>
-      <form>
+      <form class="inputForm">
         <input
           type="text"
-          class="playerinput"
+          id="player2input"
           name="player2"
           value="Enter Player 2 Name"
         />
-        <input type="submit" class="submit" name="submit" />
+        <label for="player2input"></label>
+        <input type="submit" id="player2Submit" name="submit" />
       </form>
     </div>
     <div id="board">
