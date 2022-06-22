@@ -4,7 +4,8 @@ const gameState = {
         [null, null, null],
         [null, null, null],
         [null, null, null]
-    ]
+    ],
+    currentPlayer: 0,
 }
 
 function buildInitialState() {
@@ -23,32 +24,35 @@ const board = document.getElementById('board');
 
 board.addEventListener('click', onBoardClick); //if a player clicks the board, it needs to populate the board (function)
 function onBoardClick(event) {
-    let selection = event.target.innerHTML
-    
-        if (!selection){
-            event.target.innerHTML = 'X'
-            console.log("now this inner html is populated")
+        if (!event.target.innerHTML){  //if no selection, I would like to put something there
+            if (gameState.currentPlayer === 0){
+                event.target.innerHTML = 'X'
+                gameState.currentPlayer = 1
+            } else {event.target.innerHTML = 'O'
+                gameState.currentPlayer = 0
+             }
+            
         } 
-        let player_one = 1;
-        function display_input(squares){ 
-            if ( player_one == 1 ){
-                document.getElementById(squares).innerHTML = "X";
-                player_one = 0;
-            } else {
-                document.getElementById(squares).innerHTML = "O";    
-                player_one = 1;
-            }   
-        }
-        
+       
+    function ticTacToeChecker (){
 
-    // let id = event.target.id
-    // let row = id[0]
-    // let column = id[2]
-    // if(gameState.board[row][column] === null){
-    //     gameState.board[row][column] === gameState.players[0];
-    //     console.log(gameState.board[row][column])
-    //     ;
-    // }
+        function checkRows (array){
+            let rowArray = []
+            for (let i = 0; i < array.length; i++){
+                
+            }
+            return rowArray
+        }
+
+
+
+
+
+
+
+
+
+    }      
     
 
   renderState() // show the user the new state
