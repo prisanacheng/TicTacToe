@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Joan&family=PT+Sans+Narrow&display=swap");
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Joan", serif;
+}
+
+p {
+  text-align: center;
+  flex-wrap: wrap;
+  margin: 0px;
+}
+
+#board {
+  background-color: rgba(255, 182, 193, 0.249);
+  border: solid 0px black;
+  width: 750px;
+  height: 750px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.squares {
+  background-color: lightpink;
+  width: 244px;
+  height: 225px;
+  border: solid 3px rgb(236, 116, 148);
+  display: flex;
+  justify-content: center;
+}
+
+#resetboard {
+  background-color: white;
+  padding: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-family: "Joan", serif;
+  font-size: larger;
+}
+
+.players {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3px;
+}
+
+.submit {
+  padding: 2px;
+  margin: 2px;
+  background-color: tan;
+  font-family: "Joan", serif;
+  font-size: larger;
+}
+
+.playerinput {
+  font-family: "Joan", serif;
+  padding: 2px;
+  font-size: larger;
+}
+
+innerHTML { 
+    font-size: 300px;
+
+}
+
