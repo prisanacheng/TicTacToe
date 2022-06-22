@@ -36,12 +36,8 @@ function onBoardClick(event) {
        
     function ticTacToeChecker (){
 
-        function checkRows (array){
-            let rowArray = []
-            for (let i = 0; i < array.length; i++){
-                
-            }
-            return rowArray
+        function getRow (board, row){
+            return board[row];
         }
 
 
