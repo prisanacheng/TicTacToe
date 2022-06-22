@@ -33,14 +33,14 @@ function onBoardClick(event) {
              }
             
         } 
-       
+     //function for checking ticTacToe  
     function ticTacToeChecker (){
 
         function getRow (board, row){  // ran in test.js 
             return board[row];
         }
 
-        function getColumn (board, column){     // ran in test.js
+        function getColumn (board, column){  // ran in test.js
             let columnArray = []
                 for (let i = 0; i < board.length; i++) { //looping through each array
                     let eachArray = board[i] // hole each array in a variable
@@ -50,7 +50,15 @@ function onBoardClick(event) {
             return columnArray;
         }
 
+        function getDiagonal (board, x, y){
+            let diagonalArray = [board[0][0],board[1][1],board[2][2]]
+            if (y === 2){
+                diagonalArray = [board[0][2], board[1][1],board[2][0]]
+            }
+            
         
+            return diagonalArray;
+        }
 
 
     }      
