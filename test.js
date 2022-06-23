@@ -1,24 +1,24 @@
 let board = 
-[['x','x','x'],
-['o','x','o'],
-['x','o','o']];
+[['x','x','o'],
+['o','o','o'],
+['o','o','x']];
 
-// function getRow (board, row){
-//     return board[row];
-// }
+function getRow (board, row){
+    return board[row];
+}
 // console.log(getRow(board, 1))
 
 
-// function getColumn (board, column){
-//     let columnArray = []
-//         for (let i = 0; i < board.length; i++) {//looping through each array
-//             let eachArray = board[i] // hole each array in a variable
-//             let value = eachArray[column] // pull out value from each array
-//             columnArray.push(value)
-//         }
-//     return columnArray;
+function getColumn (board, column){
+    let columnArray = []
+        for (let i = 0; i < board.length; i++) {//looping through each array
+            let eachArray = board[i] // hole each array in a variable
+            let value = eachArray[column] // pull out value from each array
+            columnArray.push(value)
+        }
+    return columnArray;
 
-// }
+}
 // console.log(getColumn(board, 2))
 
 
@@ -36,32 +36,66 @@ let board =
         //   } 
         // } 
         // } 
-// function getDiagonal (board, x, y){
-//     let diagonalArray = [board[0][0],board[1][1],board[2][2]]
-//     if (y === 2){
-//         diagonalArray = [board[0][2], board[1][1],board[2][0]]
-//     }
-    
-
-//     return diagonalArray;
-// }
+function getDiagonal (board, x, y){
+    let diagonalArray = [board[0][0],board[1][1],board[2][2]]
+    if (y === 2){
+        diagonalArray = [board[0][2], board[1][1],board[2][0]]
+    } 
+    return diagonalArray;
+}
 
 // console.log(getDiagonal(board,0,2), "backward diagonal")
 // console.log(getDiagonal(board,0,0),"forward diagonal")  
 
 function checkXAndO (array){
     if (array.join("")==="xxx"){
-        return "X Wins";
+        return "x wins";
     }
     if (array.join("")==="ooo"){
-        return "O Wins";
+        return "o wins";
     }
     return false
 }
-console.log(checkXAndO(['o','o','o']))
-console.log(checkXAndO(['x','x','x']))
+// console.log(checkXAndO(['o','o','o']))
+// console.log(checkXAndO(['x','x','o']))
 
 
+function checkWinner (board){
+    //check for rows
+    for(let i = 0; i < board.length; i++){
+        let currentRow = getRow(board, i); //will look at each row array
+        let winner = checkXAndO(currentRow);
+        if (winner === "x wins"){
+            return "X is the Winner!";
+        }
+        if (winner === "o wins"){
+            return "O is the Winner!";
+        }
+    }
+    for(let i = 0; i < board.length; i++){
+        let currentColumn = getColumn(board, i);
+        let winner = checkXAndO(currentColumn);
+        if (winner === "x wins"){
+            return "X is the Winner!";
+        }
+        if (winner === "o wins"){
+            return "O is the Winner!";
+        }
+    }
+    for(let i = 0; i < board.length; i++){
+        let currentDiagonal = getDiagonal(board, i);
+        let winner = checkXAndO(currentDiagonal);
+        if (winner === "x wins"){
+            return "X is the Winner!";
+        }
+        if (winner === "o wins"){
+            return "O is the Winner!";
+        }
+    }
+
+  }
+
+console.log(checkWinner(board))
 
 
 
