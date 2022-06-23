@@ -3,9 +3,12 @@ let board =
 ['o','o','o'],
 ['o','o','x']];
 
+let checkerArray = []
+
 function getRow (board, row){
     return board[row];
 }
+checkerArray.push(getRow);
 // console.log(getRow(board, 1))
 
 
@@ -17,8 +20,8 @@ function getColumn (board, column){
             columnArray.push(value)
         }
     return columnArray;
-
 }
+checkerArray.push(getColumn);
 // console.log(getColumn(board, 2))
 
 
@@ -44,8 +47,8 @@ function getDiagonal (board, x, y){
     return diagonalArray;
 }
 
-// console.log(getDiagonal(board,0,2), "backward diagonal")
-// console.log(getDiagonal(board,0,0),"forward diagonal")  
+console.log(getDiagonal(board,0,2), "backward diagonal")
+console.log(getDiagonal(board,0,0),"forward diagonal")  
 
 function checkXAndO (array){
     if (array.join("")==="xxx"){
@@ -56,8 +59,25 @@ function checkXAndO (array){
     }
     return false
 }
-// console.log(checkXAndO(['o','o','o']))
-// console.log(checkXAndO(['x','x','o']))
+// // console.log(checkXAndO(['o','o','o']))
+// // console.log(checkXAndO(['x','x','o']))
+
+
+// checkerArray.forEach(function(element){
+//     console.log(element(0))
+
+// });
+
+
+
+
+
+
+
+
+
+
+
 
 
 function checkWinner (board){
@@ -92,18 +112,9 @@ function checkWinner (board){
             return "O is the Winner!";
         }
     }
-
-  }
+}
 
 console.log(checkWinner(board))
-
-
-
-
-
-
-
-
 
 
 

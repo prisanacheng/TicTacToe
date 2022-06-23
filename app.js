@@ -8,12 +8,13 @@ const gameState = {
   currentPlayer: 0,
 };
 
+
 function buildInitialState() {}
 
 // render
 function renderState() {}
 
-// maybe a dozen or so helper functions for tiny pieces of the interface
+
 
 // listeners
 const board = document.getElementById("board");
@@ -30,11 +31,12 @@ function onBoardClick(event) {
       gameState.currentPlayer = 0;
     }
   }
-
+  let checkerArray = []     //storing all functions in this array
   //function for row array
   function getRow(board, row) {
     return board[row];
   }
+  
 
   //function for column array
   function getColumn(board, column) {
@@ -47,7 +49,7 @@ function onBoardClick(event) {
     }
     return columnArray;
   }
-
+  
   //function for diagonal array
   function getDiagonal(board, x, y) {
     let diagonalArray = [board[0][0], board[1][1], board[2][2]];
@@ -56,8 +58,22 @@ function onBoardClick(event) {
     }
     return diagonalArray;
   }
+  let win = checkWinner(gameState.board)
 
-  function checkXAndO(array) {
+  if (win){
+    console.log(win)
+  } else {
+      //no one won so do something 
+  }
+
+
+
+
+  renderState(); // show the user the new state
+}
+
+
+function checkXAndO(array) {
     if (array.join("") === "xxx") {
       return true;
     }
@@ -67,25 +83,64 @@ function onBoardClick(event) {
     return false;
   }
 
-  function checkWinner (board){
+
+
+function checkWinner (board){
     //check for rows
     for(let i = 0; i < board.length; i++){
         let currentRow = getRow(board, i); //will look at each row array
         let winner = checkXAndO(currentRow);
-        if (winner){
-            break;
+        if (winner === "x wins"){
+            return "X is the Winner!";
+        }
+        if (winner === "o wins"){
+            return "O is the Winner!";
         }
     }
-
-  }
-
-
-
-
-
-
-  renderState(); // show the user the new state
+    for(let i = 0; i < board.length; i++){
+        let currentColumn = getColumn(board, i);
+        let winner = checkXAndO(currentColumn);
+        if (winner === "x wins"){
+            return "X is the Winner!";
+        }
+        if (winner === "o wins"){
+            return "O is the Winner!";
+        }
+    }
+    for(let i = 0; i < board.length; i++){
+        let currentDiagonal = getDiagonal(board, i);
+        let winner = checkXAndO(currentDiagonal);
+        if (winner === "x wins"){
+            return "X is the Winner!";
+        }
+        if (winner === "o wins"){
+            return "O is the Winner!";
+        }
+    } return false
 }
+
+//RESETS THE BOARD USING THE BUTTON
+const resetbutton = document.getElementById('resetboard')
+
+resetbutton.addEventListener("click", clearBoard);
+    function clearBoard (){
+        document.getElementById("0,0").innerHTML = "";
+        document.getElementById("0,1").innerHTML = "";
+        document.getElementById("0,2").innerHTML = "";
+        document.getElementById("1,0").innerHTML = "";
+        document.getElementById("1,1").innerHTML = "";
+        document.getElementById("1,2").innerHTML = "";
+        document.getElementById("2,0").innerHTML = "";
+        document.getElementById("2,1").innerHTML = "";
+        document.getElementById("2,2").innerHTML = "";
+    
+    // how to make it so next turn is random start
+    
+    
+    }
+
+
+
 
 // section for getting names to appear on screen
 
