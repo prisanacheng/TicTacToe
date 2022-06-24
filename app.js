@@ -14,11 +14,24 @@ function buildInitialState() {}
 // render
 function renderState() {}
 
+const Player1 = document.getElementById('player1input');
+const Player2 = document.getElementById('player2input');
+const submitButton =  document.getElementById("playerSubmit");
+
+submitButton.addEventListener("click", hideNames); 
+    function hideNames(event){
+        if (event.target){
+        let hiddenBox = document.getElementById("beforePlaying");
+        hiddenBox.style.display = "none";
+    }
+    }
+
 
 
 // listeners
 const board = document.getElementById("board");
-
+const xWinsBanner = document.getElementById("xBanner");
+const oWinsBanner = document.getElementById("oBanner");
 board.addEventListener("click", onBoardClick); //if a player clicks the board, it needs to populate the board (function)
 function onBoardClick(event) {
     let click = event.target.id
@@ -39,12 +52,14 @@ function onBoardClick(event) {
   }
 
 let result = checkWinner(gameState.board)
-if (result === "X is the Winner!"){
+    if (result === "X is the Winner!"){
     console.log("x wins")
-}
-if (result === "O is the Winner!"){
+    xWinsBanner.style.display = "block";
+    }
+    if (result === "O is the Winner!"){
     console.log("o wins")
-}
+    oWinsBanner.style.display = "block";
+    }
 
   renderState(); // show the user the new state
 }
@@ -102,7 +117,7 @@ function getColumn(board, column) {
 //function for diagonal array
 function getDiagonal(board, x, y) {
   let diagonalArray = [board[0][0], board[1][1], board[2][2]];
-  if (y === 2) {
+  if (x === 0 && y === 2 || x === 1 && y === 1 || x === 2 && y === 0){
     diagonalArray = [board[0][2], board[1][1], board[2][0]];
   }
   return diagonalArray;

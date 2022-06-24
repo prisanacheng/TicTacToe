@@ -10,6 +10,8 @@
   </head>
   <body>
     <h1>Tic-Tac-Toe</h1>
+    <div id = xBanner style="display:none">X Wins!!!!</div>
+    <div id = oBanner style="display:none">O Wins!!!!</div>
     <!-- section for during play screen -->
     <div id = beforePlaying>
     <p>
@@ -30,7 +32,6 @@
           name="player1"
           value="Enter Player 1 Name"
         />
-        <label for="player1input"></label>
       </form>
       <form class="inputForm">
         <input
@@ -46,7 +47,8 @@
     </div>
     <!-- section for during play screen -->
     <div id = duringPlay>
-   <!-- I need to put names to display here -->
+      <p></p>
+      <p></p>
     </div>
     <div id="board">
       <div class="squares" id="0,0"></div>
