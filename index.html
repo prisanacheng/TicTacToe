@@ -10,6 +10,8 @@
   </head>
   <body>
     <h1>Tic-Tac-Toe</h1>
+    <!-- section for during play screen -->
+    <div id = beforePlaying>
     <p>
       Directions: Input the names of each player. If no second player, leave the
       field <b><u>blank</u></b
@@ -29,7 +31,6 @@
           value="Enter Player 1 Name"
         />
         <label for="player1input"></label>
-        <input type="submit" id="player1Submit" name="submit" />
       </form>
       <form class="inputForm">
         <input
@@ -39,8 +40,13 @@
           value="Enter Player 2 Name"
         />
         <label for="player2input"></label>
-        <input type="submit" id="player2Submit" name="submit" />
+        <input type="submit" id="playerSubmit" name="submit" />
       </form>
+      </div>
+    </div>
+    <!-- section for during play screen -->
+    <div id = duringPlay>
+   <!-- I need to put names to display here -->
     </div>
     <div id="board">
       <div class="squares" id="0,0"></div>

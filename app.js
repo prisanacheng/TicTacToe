@@ -7,7 +7,7 @@ const gameState = {
   ],
   currentPlayer: 0,
 };
-
+ 
 
 function buildInitialState() {}
 
@@ -21,69 +21,33 @@ const board = document.getElementById("board");
 
 board.addEventListener("click", onBoardClick); //if a player clicks the board, it needs to populate the board (function)
 function onBoardClick(event) {
-  if (!event.target.innerHTML) {
+    let click = event.target.id
+    let clickSplits = click.split(",")
+    if (!event.target.innerHTML) {
     //if no selection, I would like to put something there
     if (gameState.currentPlayer === 0) {
       event.target.innerHTML = "X";
+      gameState.board[clickSplits[0]][clickSplits[1]] = "x"
+      console.log(gameState.board)
       gameState.currentPlayer = 1;
     } else {
       event.target.innerHTML = "O";
+      gameState.board[clickSplits[0]][clickSplits[1]] = "o"
+      console.log(gameState.board)
       gameState.currentPlayer = 0;
     }
   }
-  let checkerArray = []     //storing all functions in this array
-  //function for row array
-  function getRow(board, row) {
-    return board[row];
-  }
-  
 
-  //function for column array
-  function getColumn(board, column) {
-    let columnArray = [];
-    for (let i = 0; i < board.length; i++) {
-      //looping through each array
-      let eachArray = board[i]; // hole each array in a variable
-      let value = eachArray[column]; // pull out value from each array
-      columnArray.push(value);
-    }
-    return columnArray;
-  }
-  
-  //function for diagonal array
-  function getDiagonal(board, x, y) {
-    let diagonalArray = [board[0][0], board[1][1], board[2][2]];
-    if (y === 2) {
-      diagonalArray = [board[0][2], board[1][1], board[2][0]];
-    }
-    return diagonalArray;
-  }
-  let win = checkWinner(gameState.board)
-
-  if (win){
-    console.log(win)
-  } else {
-      //no one won so do something 
-  }
-
-
-
+let result = checkWinner(gameState.board)
+if (result === "X is the Winner!"){
+    console.log("x wins")
+}
+if (result === "O is the Winner!"){
+    console.log("o wins")
+}
 
   renderState(); // show the user the new state
 }
-
-
-function checkXAndO(array) {
-    if (array.join("") === "xxx") {
-      return true;
-    }
-    if (array.join("") === "ooo") {
-      return true;
-    }
-    return false;
-  }
-
-
 
 function checkWinner (board){
     //check for rows
@@ -116,7 +80,42 @@ function checkWinner (board){
         if (winner === "o wins"){
             return "O is the Winner!";
         }
-    } return false
+    }
+}
+//function for row array
+function getRow (board, row){
+    return board[row];
+}
+
+//function for column array
+function getColumn(board, column) {
+  let columnArray = [];
+  for (let i = 0; i < board.length; i++) {
+    //looping through each array
+    let eachArray = board[i]; // hole each array in a variable
+    let value = eachArray[column]; // pull out value from each array
+    columnArray.push(value);
+  }
+  return columnArray;
+}
+
+//function for diagonal array
+function getDiagonal(board, x, y) {
+  let diagonalArray = [board[0][0], board[1][1], board[2][2]];
+  if (y === 2) {
+    diagonalArray = [board[0][2], board[1][1], board[2][0]];
+  }
+  return diagonalArray;
+}
+
+function checkXAndO (array){
+    if (array.join("")==="xxx"){
+        return "x wins";
+    }
+    if (array.join("")==="ooo"){
+        return "o wins";
+    }
+    return false
 }
 
 //RESETS THE BOARD USING THE BUTTON
@@ -134,12 +133,8 @@ resetbutton.addEventListener("click", clearBoard);
         document.getElementById("2,1").innerHTML = "";
         document.getElementById("2,2").innerHTML = "";
     
-    // how to make it so next turn is random start
-    
     
     }
-
-
 
 
 // section for getting names to appear on screen
