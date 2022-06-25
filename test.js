@@ -11,7 +11,7 @@ function getDiagonal(board, x, y) {
     return diagonalArray;
   }
 
-  console.log(getDiagonal(board, 2, 0))
+//   console.log(getDiagonal(board, 2, 0))
 
 // let checkerArray = []
 

@@ -7,28 +7,25 @@ const gameState = {
   ],
   currentPlayer: 0,
 };
- 
-
-function buildInitialState() {}
-
-// render
-function renderState() {}
-
-const Player1 = document.getElementById('player1input');
-const Player2 = document.getElementById('player2input');
-const submitButton =  document.getElementById("playerSubmit");
-
-submitButton.addEventListener("click", hideNames); 
-    function hideNames(event){
-        if (event.target){
-        let hiddenBox = document.getElementById("beforePlaying");
-        hiddenBox.style.display = "none";
-    }
-    }
 
 
+player1input.addEventListener("keypress", (event) => {
+    if(event.key==="Enter" && player1input.value.length > 0){
+        inputForm1.innerHTML = player1input.value;
+        inputForm1.style.marginRight = "30px";
+        inputForm1.style.color = "antiquewhite";
+        inputForm1.style.fontSize = "50px";
+     }  
+} )  
+player2input.addEventListener("keypress", (event) => {
+    if(event.key==="Enter" && player2input.value.length > 0){
+        inputForm2.innerHTML = player2input.value;
+        inputForm2.style.marginRight = "30px";
+        inputForm2.style.color = "antiquewhite";
+        inputForm2.style.fontSize = "50px";
+     }  
+} )  
 
-// listeners
 const board = document.getElementById("board");
 const xWinsBanner = document.getElementById("xBanner");
 const oWinsBanner = document.getElementById("oBanner");
@@ -59,9 +56,7 @@ let result = checkWinner(gameState.board)
     if (result === "O is the Winner!"){
     console.log("o wins")
     oWinsBanner.style.display = "block";
-    }
-
-  renderState(); // show the user the new state
+    } 
 }
 
 function checkWinner (board){
@@ -87,7 +82,7 @@ function checkWinner (board){
         }
     }
     for(let i = 0; i < board.length; i++){
-        let currentDiagonal = getDiagonal(board, i);
+        let currentDiagonal = frontgetDiagonal(board, i);
         let winner = checkXAndO(currentDiagonal);
         if (winner === "x wins"){
             return "X is the Winner!";
@@ -95,8 +90,18 @@ function checkWinner (board){
         if (winner === "o wins"){
             return "O is the Winner!";
         }
-    }
-}
+    }  
+    for(let i = 0; i < board.length; i++){
+        let currentDiagonal = backgetDiagonal(board, i);
+        let winner = checkXAndO(currentDiagonal);
+        if (winner === "x wins"){
+            return "X is the Winner!";
+        }
+        if (winner === "o wins"){
+            return "O is the Winner!";
+        }
+    } return false
+} 
 //function for row array
 function getRow (board, row){
     return board[row];
@@ -115,13 +120,17 @@ function getColumn(board, column) {
 }
 
 //function for diagonal array
-function getDiagonal(board, x, y) {
-  let diagonalArray = [board[0][0], board[1][1], board[2][2]];
-  if (x === 0 && y === 2 || x === 1 && y === 1 || x === 2 && y === 0){
-    diagonalArray = [board[0][2], board[1][1], board[2][0]];
-  }
-  return diagonalArray;
+function frontgetDiagonal(board, x, y) {
+  let frontdiagonalArray = [board[0][0], board[1][1], board[2][2]];
+  
+  return frontdiagonalArray;
 }
+
+function backgetDiagonal(board, x, y) {
+    let backdiagonalArray = [board[0][2], board[1][1], board[2][0]];
+    
+    return backdiagonalArray;
+  }
 
 function checkXAndO (array){
     if (array.join("")==="xxx"){
@@ -147,17 +156,14 @@ resetbutton.addEventListener("click", clearBoard);
         document.getElementById("2,0").innerHTML = "";
         document.getElementById("2,1").innerHTML = "";
         document.getElementById("2,2").innerHTML = "";
-    
-    
+        xWinsBanner.style.display = "none";
+        oWinsBanner.style.display = "none";
+        gameState.currentPlayer === 0;
+        gameState.board = [
+            [null, null, null],
+            [null, null, null],
+            [null, null, null],
+          ]
     }
 
 
-// section for getting names to appear on screen
-
-// const player1Name = document.getElementById("player1Submit");
-// player1Name.addEventListener('click', player1Click);
-// function player1Click(event){
-//     if (event.target.innerHTML){
-//         event.target.innerHTML = value;
-//     }
-// }

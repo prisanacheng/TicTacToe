@@ -10,10 +10,9 @@
   </head>
   <body>
     <h1>Tic-Tac-Toe</h1>
-    <div id = xBanner style="display:none">X Wins!!!!</div>
-    <div id = oBanner style="display:none">O Wins!!!!</div>
+    <div id="xBanner" style="display: none">X reigns supreme!</div>
+    <div id="oBanner" style="display: none">O reigns supreme!</div>
     <!-- section for during play screen -->
-    <div id = beforePlaying>
     <p>
       Directions: Input the names of each player. If no second player, leave the
       field <b><u>blank</u></b
@@ -23,30 +22,28 @@
       Each player will take turns inputting their respective X's and O's. The
       first to get three in-a-row is the winner!
     </p>
-    <p>To clear the board, click "Reset My Board" to start over!</p>
-    <div class="players">
-      <form class="inputForm">
+    <p>To clear the board, click "Restart game" to start over!</p>
+    <span class="players">
+      <form id="inputForm1">
         <input
           type="text"
           id="player1input"
           name="player1"
-          value="Enter Player 1 Name"
+          placeholder="Enter Player 1 Name"
         />
       </form>
-      <form class="inputForm">
+      <p id = versus>VS</p>
+      <form id="inputForm2">
         <input
           type="text"
           id="player2input"
           name="player2"
-          value="Enter Player 2 Name"
+          placeholder="Enter Player 2 Name"
         />
-        <label for="player2input"></label>
-        <input type="submit" id="playerSubmit" name="submit" />
       </form>
-      </div>
-    </div>
+    </span>
     <!-- section for during play screen -->
-    <div id = duringPlay>
+    <div id="duringPlay">
       <p></p>
       <p></p>
     </div>
