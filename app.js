@@ -24,30 +24,48 @@ player2input.addEventListener("keypress", (event) => {
         inputForm2.style.color = "antiquewhite";
         inputForm2.style.fontSize = "50px";
      }  
+     else if(event.key==="Enter" && player2input.value.length === 0){
+         inputForm2.innerHTML = "Computer";
+         inputForm2.style.marginRight = "30px";
+         inputForm2.style.color = "antiquewhite";
+         inputForm2.style.fontSize = "50px";
+     } 
 } )  
 
+
+
+const player1 = player1input.value;
+console.log(player1)
+const player2 = player2input.value;
+console.log(player2)
+const comp = findComputer(player2input.value)
+console.log(comp)
 const board = document.getElementById("board");
 const xWinsBanner = document.getElementById("xBanner");
 const oWinsBanner = document.getElementById("oBanner");
+
+
+
+
 board.addEventListener("click", onBoardClick); //if a player clicks the board, it needs to populate the board (function)
 function onBoardClick(event) {
     let click = event.target.id
     let clickSplits = click.split(",")
     if (!event.target.innerHTML) {
     //if no selection, I would like to put something there
-    if (gameState.currentPlayer === 0) {
-      event.target.innerHTML = "X";
-      gameState.board[clickSplits[0]][clickSplits[1]] = "x"
-      console.log(gameState.board)
-      gameState.currentPlayer = 1;
-    } else {
-      event.target.innerHTML = "O";
-      gameState.board[clickSplits[0]][clickSplits[1]] = "o"
-      console.log(gameState.board)
-      gameState.currentPlayer = 0;
+        if (gameState.currentPlayer === 0) {
+        event.target.innerHTML = "X";
+         gameState.board[clickSplits[0]][clickSplits[1]] = "x"
+        console.log(gameState.board)
+        gameState.currentPlayer = 1;
+        } else {
+        event.target.innerHTML = "O";
+        gameState.board[clickSplits[0]][clickSplits[1]] = "o"
+        console.log(gameState.board)
+        gameState.currentPlayer = 0;
+        }
     }
-  }
-
+   
 let result = checkWinner(gameState.board)
     if (result === "X is the Winner!"){
     console.log("x wins")
@@ -167,3 +185,9 @@ resetbutton.addEventListener("click", clearBoard);
     }
 
 
+    
+function findComputer(){
+        if(player2input.value.length === 0){
+            return true
+        }
+    }

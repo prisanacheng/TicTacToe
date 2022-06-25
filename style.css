@@ -21,7 +21,6 @@ p {
 
 #board {
   background-color: rgba(255, 182, 193, 0.249);
-  border: solid 0px black;
   width: 648px;
   height: 648px;
   display: flex;
@@ -58,6 +57,10 @@ p {
   color: rgb(124, 123, 127)
 }
 
+#resetboard:hover {
+  background-color: lightpink;
+}
+
 .players {
   display: flex;
   justify-content: space-between;
@@ -88,28 +91,32 @@ p {
 #xBanner {
     color: antiquewhite;
     font-size: 50px;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     margin-top: 0px;
     padding-top: 0px;
+    border: solid 3px antiquewhite;
+    padding: 3px;
 }
 
 #oBanner {
     color: antiquewhite;
     font-size: 50px;
-    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
     margin-top: 0px;
     padding-top: 0px;
+    border: solid 3px antiquewhite;
+    padding: 3px;
 }
 
 h1 {
     margin-bottom: 0px;
     color: antiquewhite;
+    text-shadow: 1px 0 0 black, 0 -1px 0 black, 0 1px 0 black, -1px 0 0 black;
+    font-size: 50px;
 
 }
 
 #versus {
     border: solid 3px rgb(124, 123, 127);
-    font-size: 30px;
+    font-size: 20px;
     padding: 5px;
     color: rgb(124, 123, 127);
     background-color: antiquewhite;
