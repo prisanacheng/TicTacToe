@@ -1,10 +1,10 @@
 const gameState = {
   players: ["x", "o"],
   board: [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null],
-  ],
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""],
+    ],
   currentPlayer: 0,
 };
 
@@ -18,6 +18,7 @@ player1input.addEventListener("keypress", (event) => {
      }  
 } )  
 player2input.addEventListener("keypress", (event) => {
+    findComputer()
     if(event.key==="Enter" && player2input.value.length > 0){
         inputForm2.innerHTML = player2input.value;
         inputForm2.style.marginRight = "30px";
@@ -30,19 +31,17 @@ player2input.addEventListener("keypress", (event) => {
          inputForm2.style.color = "antiquewhite";
          inputForm2.style.fontSize = "50px";
      } 
-} )  
+} )
 
 
 
 const player1 = player1input.value;
-console.log(player1)
 const player2 = player2input.value;
-console.log(player2)
-const comp = findComputer(player2input.value)
-console.log(comp)
 const board = document.getElementById("board");
 const xWinsBanner = document.getElementById("xBanner");
 const oWinsBanner = document.getElementById("oBanner");
+const tieBanner = document.getElementById("tieBanner");
+const squares = document.getElementsByClassName("squares");
 
 
 
@@ -71,10 +70,16 @@ let result = checkWinner(gameState.board)
     console.log("x wins")
     xWinsBanner.style.display = "block";
     }
-    if (result === "O is the Winner!"){
+    else if (result === "O is the Winner!"){
     console.log("o wins")
     oWinsBanner.style.display = "block";
     } 
+    else if (!gameState.board[0].includes("") && !gameState.board[1].includes("") && !gameState.board[2].includes("")){
+    console.log("tie")
+    tieBanner.style.display = "block";
+    }
+    
+    
 }
 
 function checkWinner (board){
@@ -87,7 +92,7 @@ function checkWinner (board){
         }
         if (winner === "o wins"){
             return "O is the Winner!";
-        }
+        } 
     }
     for(let i = 0; i < board.length; i++){
         let currentColumn = getColumn(board, i);
@@ -97,7 +102,7 @@ function checkWinner (board){
         }
         if (winner === "o wins"){
             return "O is the Winner!";
-        }
+        } 
     }
     for(let i = 0; i < board.length; i++){
         let currentDiagonal = frontgetDiagonal(board, i);
@@ -107,7 +112,7 @@ function checkWinner (board){
         }
         if (winner === "o wins"){
             return "O is the Winner!";
-        }
+        } 
     }  
     for(let i = 0; i < board.length; i++){
         let currentDiagonal = backgetDiagonal(board, i);
@@ -117,9 +122,11 @@ function checkWinner (board){
         }
         if (winner === "o wins"){
             return "O is the Winner!";
-        }
+        } 
     } return false
 } 
+
+
 //function for row array
 function getRow (board, row){
     return board[row];
@@ -176,18 +183,46 @@ resetbutton.addEventListener("click", clearBoard);
         document.getElementById("2,2").innerHTML = "";
         xWinsBanner.style.display = "none";
         oWinsBanner.style.display = "none";
+        tieBanner.style.display = "none";
         gameState.currentPlayer === 0;
         gameState.board = [
-            [null, null, null],
-            [null, null, null],
-            [null, null, null],
+            ["", "", ""],
+            ["", "", ""],
+            ["", "", ""],
           ]
     }
 
 
     
 function findComputer(){
+    console.log(player2input.value.length)
         if(player2input.value.length === 0){
+            console.log( 'true')
             return true
+        } else {
+            console.log( 'false' )
+            return false
         }
     }
+
+// function comFindMove(board){
+//     console.log("hit")
+//     for ( let i = 0; i < board[0].length; i++ ) {
+//         if( board[ 0 ][i] === "" ) {
+//             console.log( 'board[ 0 ][i]', i)
+//             console.log( 'first board true')
+//             return true
+//         } else 
+//     }
+
+    // for(let i = 0; i < board.length; i++){
+    //     for(let k = 0; k < board[i].length; k++){
+    //     if (board[i][k] === foundItem ){
+    //         console.log( 'com find move true')
+    //         return true  
+    //     } else if ( board[i][k] === 'x' || 'o') {
+    //         console.log( 'com find move false')
+    //         return false
+    //         }
+    //     }
+    // }
